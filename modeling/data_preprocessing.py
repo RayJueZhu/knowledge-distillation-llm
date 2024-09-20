@@ -3,6 +3,8 @@ import pandas as pd
 import requests
 import time
 import os
+from dotenv import find_dotenv, dotenv_values
+
 
 def load_data(file_path):
     with open(file_path, 'r') as file:
@@ -76,8 +78,9 @@ def get_files(json_objects, token=None):
             print(f"Missing key in JSON object: {e}")
 
 if __name__ == "__main__":
-    json_object = load_data("d181745f-03a2-4273-a8fd-a00c4b279c66.jsonl")
-    token = ""  # Replace with your actual token
+    config = dotenv_values(find_dotenv())
+    # token = config["GITHUB_ACCESS_TOKEN"] # Replace with your actual token
+    """json_object = load_data("d181745f-03a2-4273-a8fd-a00c4b279c66.jsonl")
     print("First")
     print(json_object[0])
-    get_files(json_object, token=token)
+    get_files(json_object, token=token)"""
